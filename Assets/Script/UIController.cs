@@ -50,6 +50,7 @@ public class UIController : MonoBehaviour
 
 		if (Input.GetKeyUp (KeyCode.Return) && !Core.gameStart && !countStart) {
 			countStart = true;
+			Core.getInstance ().resetScore ();
 			StartCoroutine (startGame ());
 		}
 

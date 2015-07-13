@@ -88,6 +88,11 @@ public class Core
 		totalScore += score;
 	}
 
+	public void resetScore ()
+	{
+		totalScore = 0;
+	}
+
 	public int getScore ()
 	{
 		return totalScore;
