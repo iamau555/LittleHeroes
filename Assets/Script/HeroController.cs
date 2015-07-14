@@ -103,7 +103,7 @@ public class HeroController : MonoBehaviour
 
 					source.PlayOneShot (swapSound);
 
-					nextChange = Time.time + delayChange;
+					//nextChange = Time.time + delayChange;
 
 					Debug.Log (((HeroUnit)Core.getInstance ().heroLine () [0]).name);
 
@@ -146,7 +146,7 @@ public class HeroController : MonoBehaviour
 
 					source.PlayOneShot (swapSound);
 
-					nextChange = Time.time + delayChange;
+					//nextChange = Time.time + delayChange;
 
 					// first, set tmp direction and position
 					Core.getInstance ().setTempPosition (((HeroUnit)Core.getInstance ().heroLine () [Core.getInstance ().heroLine ().Count - 1]).transform.position);
@@ -263,8 +263,10 @@ public class HeroController : MonoBehaviour
 					Core.getInstance ().heroLine ().RemoveAt (0);
 
 					if (Core.getInstance ().heroLine ().Count == 0) {
+						Core.getInstance ().setActive (false);
 						Core.gameEnd = true;
 						Core.anotherRound = true;
+
 					} else {
 						frontHero = ((HeroUnit)Core.getInstance ().heroLine () [0]);
 						heroSize = frontHero.GetComponent<RectTransform> ();
@@ -310,7 +312,7 @@ public class HeroController : MonoBehaviour
 			}
 
 			// While walking
-			if (!Core.getInstance ().isFight () && Time.time > nextUsage) {
+			if (!Core.getInstance ().isFight () && Time.time > nextUsage && !Core.gameEnd) {
 
 				source.PlayOneShot (walkSound);
 
